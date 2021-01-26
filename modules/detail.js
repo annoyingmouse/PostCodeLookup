@@ -17,7 +17,7 @@ export const Detail = Vue.component('detail', {
           There seems to be an issue with that postcode, please <router-link to="/">go back</router-link> and try again. You don't need to have spaces or uppercase letters to search
         </div>
       </div>
-      <div v-if="!loading || !error">
+      <template v-if="!loading || !error">
         <dl class="row" v-if="country || region">
           <template v-if="country">
             <dt class="col-sm-3">Country:</dt>
@@ -39,7 +39,7 @@ export const Detail = Vue.component('detail', {
             </li>
           </ul>
         </template>
-      </div>
+      </template>
     </div>
   `,
   created(){
