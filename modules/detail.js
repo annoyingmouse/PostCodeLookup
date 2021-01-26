@@ -28,8 +28,8 @@ export const Detail = Vue.component('detail', {
             <dd class="col-sm-9">{{region}}</dd>
           </template>
         </dl>
-      <template v-if="nearest">
-        <h3>It's nearest postcodes are:</h3>
+        <template v-if="nearest">
+          <h3>It's nearest postcodes are:</h3>
           <ul>
             <li v-for="(postcode, index) in nearest"
                 v-bind:key="index">
