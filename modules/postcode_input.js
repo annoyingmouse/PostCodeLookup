@@ -1,27 +1,27 @@
 export const PostcodeInput = Vue.component('postcode-input', {
   template: `
     <div class="form-group">
-      <label for="address-postcode">
+      <label v-bind:for="id">
         Enter a UK postcode
       </label>
       <input class="form-control" 
-             id="address-postcode"
+             v-bind:id="id"
              v-bind:class="{
                'is-invalid': invalid
              }"
-             name="address-postcode"
+             v-bind:name="id"
              type="text"
              placeholder="AB1 23CD"
              v-model="localValue"
              autocomplete="postal-code"
-             list="postcodes" 
-             aria-describedby="postcodeHelpBlock"/>
-      <datalist id="postcodes">
+             v-bind:list="id+'_list'" 
+             v-bind:aria-describedby="id+'_help_block'"/>
+      <datalist v-bind:id="id+'_list'">
         <option v-for="(item, index) in items"
                 v-bind:key="index" 
                 v-bind:value="item">
       </datalist>
-      <small id="postcodeHelpBlock"
+      <small v-bind:id="id+'_help_block'"
              class="form-text text-muted">
         Please enter a UK postocde
       </small>
@@ -37,7 +37,8 @@ export const PostcodeInput = Vue.component('postcode-input', {
     return {
       items: [],
       localValue: '',
-      invalid: false
+      invalid: false,
+      id: null
     }
   },
   watch:{
@@ -52,6 +53,9 @@ export const PostcodeInput = Vue.component('postcode-input', {
   },
   created() {
     this.localValue = this.value
+  },
+  mounted () {
+    this.id = this._uid
   },
   methods: {
     fetchItems() {

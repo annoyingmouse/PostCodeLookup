@@ -1,7 +1,5 @@
 import { Home } from '../modules/home.js';
 import { Detail } from '../modules/detail.js';
-import { Test } from '../modules/test.js';
-
 
 export const router = new VueRouter({
   routes: [
